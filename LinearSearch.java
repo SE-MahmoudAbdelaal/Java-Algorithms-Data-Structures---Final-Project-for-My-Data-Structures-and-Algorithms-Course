@@ -1,49 +1,60 @@
 package my.project;
-public class linearsearch {
-     private final double[]a;
-    private int nElemes=0;
-    public linearsearch(int cap){
-    a=new double[cap];
-            }
 
-    public void insert(int newvalue){
-        a[nElemes]=newvalue;
-        nElemes++;
+public class LinearSearch {
+    private final double[] array;
+    private int numElements = 0;
+    
+    public LinearSearch(int capacity) {
+        array = new double[capacity];
     }
-    public void linearsearchfunction(int searchkey){
-        int i;
-        for( i=0;i<nElemes;i++){
-            if(a[i]==searchkey){
-           break;
+
+    public void insert(double newValue) {
+        if (numElements < array.length) {
+            array[numElements] = newValue;
+            numElements++;
+        } else {
+            System.out.println("Array is full. Cannot insert more elements.");
+        }
+    }
+
+    public void linearSearchFunction(double searchKey) {
+        boolean found = false;
+        for (int i = 0; i < numElements; i++) {
+            if (array[i] == searchKey) {
+                found = true;
+                break;
             }
         }
-            if(i==nElemes){
-                 System.out.print("not found\n");
+        if (found) {
+            System.out.println(searchKey + " found.");
+        } else {
+            System.out.println(searchKey + " not found.");
         }
-            else{
-                System.out.print("found\n");
-            }} 
-      public void display (){
-        for(int i=0 ; i<nElemes ; i++)
-            System.out.print(a[i]+" \n");
-}
-       public static void main(String[] args){
-     linearsearch li;
-    li=new linearsearch(100);
-    li.insert(77);
-    li.insert(99);
-    li.insert(44);
-    li.insert(55);
-    li.insert(22);
-    li.insert(88);
-    li.insert(11);
-    li.insert(00);
-    li.insert(66);
-    li.insert(33);
-    li.display();
-     System.out.print("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"+"\n");
-     li.linearsearchfunction(22);
-     li.linearsearchfunction(52);
+    }
 
- }
+    public void display() {
+        System.out.println("Array elements:");
+        for (int i = 0; i < numElements; i++) {
+            System.out.println(array[i]);
+        }
+    }
+
+    public static void main(String[] args) {
+        LinearSearch linearSearch = new LinearSearch(100);
+        linearSearch.insert(77);
+        linearSearch.insert(99);
+        linearSearch.insert(44);
+        linearSearch.insert(55);
+        linearSearch.insert(22);
+        linearSearch.insert(88);
+        linearSearch.insert(11);
+        linearSearch.insert(0); 
+        linearSearch.insert(66);
+        linearSearch.insert(33);
+        
+        linearSearch.display();
+        System.out.println("////////////////////");
+        linearSearch.linearSearchFunction(22);
+        linearSearch.linearSearchFunction(52);
+    }
 }
